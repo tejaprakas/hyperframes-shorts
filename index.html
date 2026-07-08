@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920" />
+  <title>What is AI? — HyperFrames Short</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0b0f14; color: white; font-family: Inter, system-ui, sans-serif; }
+    
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+    }
+
+    .clip {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Scene colors — background is a full-bleed child, NOT on root */
+    .bg-layer {
+      position: absolute;
+      inset: 0;
+    }
+    .bg-purple  { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .bg-teal    { background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); }
+    .bg-dark    { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+    .bg-space   { background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%); }
+
+    /* Typography */
+    .title-main {
+      font-size: 136px;
+      font-weight: 900;
+      line-height: 1.1;
+      opacity: 0;
+    }
+    .title-sub {
+      font-size: 56px;
+      margin-top: 40px;
+      opacity: 0;
+      font-weight: 600;
+    }
+    .scene-number {
+      position: absolute;
+      top: 120px;
+      left: 80px;
+      font-size: 280px;
+      font-weight: 900;
+      opacity: 0;
+    }
+    .gradient-pink     { background: linear-gradient(135deg, #f093fb, #f5576c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-blue     { background: linear-gradient(135deg, #4facfe, #00f2fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-green    { background: linear-gradient(135deg, #00f260, #0575e6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    
+    .scene-point {
+      position: absolute;
+      top: 520px;
+      left: 80px;
+      right: 80px;
+      font-size: 68px;
+      font-weight: 700;
+      line-height: 1.4;
+      opacity: 0;
+    }
+    .scene-explain {
+      position: absolute;
+      top: 840px;
+      left: 80px;
+      right: 80px;
+      font-size: 42px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+      opacity: 0;
+    }
+    .emoji-reveal {
+      position: absolute;
+      bottom: 220px;
+      right: 100px;
+      font-size: 140px;
+      opacity: 0;
+      transform: scale(0);
+    }
+    .cta-button {
+      margin-top: 60px;
+      padding: 30px 80px;
+      border: 4px solid #fff;
+      border-radius: 30px;
+      font-size: 54px;
+      font-weight: 700;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="what-is-ai" data-width="1080" data-height="1920" data-duration="27">
+
+    <!-- ===== HOOK SCENE ===== -->
+    <section id="hook" class="clip" data-start="0" data-duration="5" data-track-index="1">
+      <div class="bg-layer bg-purple"></div>
+      <div class="title-main" id="hook-title">What is AI?</div>
+      <div class="title-sub" id="hook-sub">3 Mind-Blowing Facts 🚀</div>
+      <div class="emoji-reveal" id="hook-emoji" style="top:200px;right:120px;font-size:200px">🤖</div>
+    </section>
+
+    <!-- ===== FACT 1 - 1956 ===== -->
+    <section id="fact1" class="clip" data-start="5" data-duration="7" data-track-index="2">
+      <div class="bg-layer bg-teal"></div>
+      <div class="scene-number gradient-green" id="f1-num">01</div>
+      <div class="scene-point" id="f1-point">AI Has Been Around Since <span style="color:#00f260">1956</span></div>
+      <div class="scene-explain" id="f1-explain">The term "Artificial Intelligence" was coined at Dartmouth College — long before computers fit in your pocket</div>
+      <div class="emoji-reveal" id="f1-emoji">⌛</div>
+    </section>
+
+    <!-- ===== FACT 2 - 97M Jobs ===== -->
+    <section id="fact2" class="clip" data-start="12" data-duration="7" data-track-index="3">
+      <div class="bg-layer bg-dark"></div>
+      <div class="scene-number gradient-pink" id="f2-num">02</div>
+      <div class="scene-point" id="f2-point">AI Will Create <span style="color:#f5576c">97 Million</span> Jobs</div>
+      <div class="scene-explain" id="f2-explain">World Economic Forum says AI will create more jobs than it replaces — roles that didn't exist 5 years ago are being born</div>
+      <div class="emoji-reveal" id="f2-emoji">💼</div>
+    </section>
+
+    <!-- ===== FACT 3 - Cancer Diagnosis ===== -->
+    <section id="fact3" class="clip" data-start="19" data-duration="5" data-track-index="4">
+      <div class="bg-layer bg-space"></div>
+      <div class="scene-number gradient-blue" id="f3-num">03</div>
+      <div class="scene-point" id="f3-point">AI Can Diagnose Cancer Better Than Doctors</div>
+      <div class="scene-explain" id="f3-explain">Google's AI detects breast cancer at 94.5% accuracy — beating human radiologists by 11%. And it never gets tired</div>
+      <div class="emoji-reveal" id="f3-emoji">🔬</div>
+    </section>
+
+    <!-- ===== OUTRO ===== -->
+    <section id="outro" class="clip" data-start="24" data-duration="3" data-track-index="5">
+      <div class="bg-layer bg-purple"></div>
+      <div class="title-main" id="outro-title" style="font-size:100px">AI is the Future 🌍</div>
+      <div class="cta-button" id="outro-cta">Subscribe @ZeroCostTech</div>
+    </section>
+
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // === HOOK (0s - 5s) ===
+    tl.from("#hook-emoji", { opacity: 0, scale: 0, rotation: -20, duration: 0.5, ease: "back.out(2)" }, 0.2);
+    tl.to("#hook-emoji", { top: "80px", right: "40px", scale: 0.6, duration: 0.4 }, 0.8);
+    tl.from("#hook-title", { y: 48, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.6);
+    tl.from("#hook-sub", { y: 30, opacity: 0, duration: 0.5 }, 1.3);
+    // Hold until scene ends at 5s — fade out
+    tl.to(["#hook-title", "#hook-sub", "#hook-emoji"], { opacity: 0, duration: 0.3 }, 4.5);
+
+    // === FACT 1 (5s - 12s) ===
+    tl.from("#f1-num", { x: -40, opacity: 0, duration: 0.5, ease: "power2.out" }, 5.3);
+    tl.from("#f1-point", { y: 30, opacity: 0, duration: 0.5 }, 5.6);
+    tl.from("#f1-explain", { y: 20, opacity: 0, duration: 0.5 }, 6.0);
+    tl.from("#f1-emoji", { opacity: 0, scale: 0, duration: 0.5, ease: "elastic.out(1, 0.5)" }, 6.2);
+    // Exit
+    tl.to(["#f1-num", "#f1-point", "#f1-explain", "#f1-emoji"], { opacity: 0, duration: 0.3 }, 11.4);
+
+    // === FACT 2 (12s - 19s) ===
+    tl.from("#f2-num", { x: -40, opacity: 0, duration: 0.5, ease: "power2.out" }, 12.3);
+    tl.from("#f2-point", { y: 30, opacity: 0, duration: 0.5 }, 12.6);
+    tl.from("#f2-explain", { y: 20, opacity: 0, duration: 0.5 }, 13.0);
+    tl.from("#f2-emoji", { opacity: 0, scale: 0, duration: 0.5, ease: "elastic.out(1, 0.5)" }, 13.2);
+    tl.to(["#f2-num", "#f2-point", "#f2-explain", "#f2-emoji"], { opacity: 0, duration: 0.3 }, 18.4);
+
+    // === FACT 3 (19s - 24s) ===
+    tl.from("#f3-num", { x: -40, opacity: 0, duration: 0.5, ease: "power2.out" }, 19.3);
+    tl.from("#f3-point", { y: 30, opacity: 0, duration: 0.5 }, 19.6);
+    tl.from("#f3-explain", { y: 20, opacity: 0, duration: 0.5 }, 20.0);
+    tl.from("#f3-emoji", { opacity: 0, scale: 0, duration: 0.5, ease: "elastic.out(1, 0.5)" }, 20.2);
+    tl.to(["#f3-num", "#f3-point", "#f3-explain", "#f3-emoji"], { opacity: 0, duration: 0.3 }, 23.4);
+
+    // === OUTRO (24s - 27s) ===
+    tl.from("#outro-title", { scale: 0.5, opacity: 0, duration: 0.6, ease: "back.out(2)" }, 24.3);
+    tl.from("#outro-cta", { scale: 0.3, opacity: 0, duration: 0.5, ease: "back.out(1.5)" }, 24.9);
+
+    window.__timelines["what-is-ai"] = tl;
+
+    // Browser preview auto-start
+    document.addEventListener("DOMContentLoaded", () => tl.play());
+  </script>
+</body>
+</html>

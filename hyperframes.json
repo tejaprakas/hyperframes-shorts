@@ -1,0 +1,22 @@
+{
+  "name": "what-is-ai",
+  "version": "1.0.0",
+  "description": "YouTube Short — What is AI? 3 Mind-Blowing Facts",
+  "compositionId": "what-is-ai",
+  "width": 1080,
+  "height": 1920,
+  "duration": 27,
+  "fps": 30,
+  "format": "youtube-shorts",
+  "audio": {
+    "tts": "browser",
+    "voice": "en-US-Neural2-D"
+  },
+  "scenes": [
+    {"id": "hook", "start": 0, "duration": 5, "text": "Hook — What is AI?"},
+    {"id": "fact1", "start": 5, "duration": 7, "text": "Fact 1 — AI Since 1956"},
+    {"id": "fact2", "start": 12, "duration": 7, "text": "Fact 2 — 97M Jobs"},
+    {"id": "fact3", "start": 19, "duration": 5, "text": "Fact 3 — Cancer Diagnosis"},
+    {"id": "outro", "start": 24, "duration": 3, "text": "Outro — Subscribe"}
+  ]
+}
