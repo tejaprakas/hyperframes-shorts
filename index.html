@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=1080, height=1920" />
-  <title>What is AI? — Vaibhav Sisinty Style Short</title>
+  <title>What is AI? — Vaibhav Style with Images & Voiceover</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,299 +29,261 @@
       overflow: hidden;
     }
 
-    /* ── HOOK: DARK BG WITH HIGHLIGHTS ── */
-    #hook {
-      background: linear-gradient(135deg, #0b0f14 0%, #1a1a2e 50%, #16213e 100%);
+    /* ── BACKGROUND IMAGE OVERLAY ── */
+    .bg-img {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+      object-fit: cover;
+      z-index: 0;
     }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(135deg, rgba(11,15,20,0.85) 0%, rgba(30,27,75,0.75) 50%, rgba(15,23,42,0.85) 100%);
+    }
+    .overlay-light {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(135deg, rgba(11,15,20,0.7) 0%, rgba(26,15,46,0.6) 50%, rgba(15,23,42,0.7) 100%);
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── HOOK ── */
     #hook .glow-ring {
       position: absolute;
       width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%);
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
+      z-index: 2;
     }
-    #hook .emoji-main {
-      font-size: 140px;
-      opacity: 0;
-    }
+    #hook .emoji-main { font-size: 140px; opacity: 0; position: relative; z-index: 3; }
     #hook .title-text {
-      font-size: 120px;
-      font-weight: 800;
-      text-align: center;
-      line-height: 1.2;
-      margin-top: 30px;
-      opacity: 0;
+      font-size: 110px; font-weight: 800; text-align: center; line-height: 1.2;
+      margin-top: 30px; opacity: 0; position: relative; z-index: 3;
     }
     #hook .title-text span {
-      display: inline-block;
       background: linear-gradient(135deg, #818cf8, #c084fc, #f472b6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     #hook .subtitle {
-      font-size: 44px;
-      font-weight: 600;
-      color: #94a3b8;
-      margin-top: 50px;
-      opacity: 0;
-    }
-    #hook .number-highlight {
-      position: absolute;
-      font-size: 500px;
-      font-weight: 900;
-      color: rgba(99,102,241,0.04);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
+      font-size: 42px; font-weight: 600; color: #94a3b8;
+      margin-top: 40px; opacity: 0; position: relative; z-index: 3;
     }
 
-    /* ── FACT CARDS (Vaibhav style numbered list) ── */
+    /* ── FACT CARDS ── */
     .fact-card {
-      background: linear-gradient(135deg, #1e1b4b, #0f0f23);
-      border-radius: 50px;
-      padding: 60px 80px;
+      background: linear-gradient(135deg, rgba(30,27,75,0.9), rgba(15,15,35,0.9));
+      border-radius: 40px;
+      padding: 50px 70px;
       text-align: center;
-      border: 2px solid rgba(99,102,241,0.2);
+      border: 2px solid rgba(99,102,241,0.25);
       opacity: 0;
       position: relative;
       overflow: hidden;
       max-width: 920px;
+      backdrop-filter: blur(10px);
+      z-index: 3;
     }
     .fact-card .bg-number {
       position: absolute;
-      font-size: 600px;
-      font-weight: 900;
+      font-size: 500px; font-weight: 900;
       color: rgba(99,102,241,0.04);
-      top: -100px;
-      right: -100px;
+      top: -80px; right: -80px;
     }
     .fact-card .number-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 120px;
-      height: 120px;
-      border-radius: 30px;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 100px; height: 100px;
+      border-radius: 25px;
       background: linear-gradient(135deg, #818cf8, #6366f1);
-      font-size: 60px;
-      font-weight: 800;
-      margin-bottom: 30px;
-      box-shadow: 0 0 60px rgba(99,102,241,0.3);
-    }
-    .fact-card .fact-emoji {
-      font-size: 130px;
-      display: block;
+      font-size: 50px; font-weight: 800;
       margin-bottom: 25px;
+      box-shadow: 0 0 50px rgba(99,102,241,0.3);
     }
-    .fact-card .fact-title {
-      font-size: 52px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: #e2e8f0;
-    }
-    .fact-card .fact-body {
-      font-size: 36px;
-      font-weight: 400;
-      color: #94a3b8;
-      line-height: 1.5;
-    }
-    .fact-card .fact-body strong {
-      color: #a78bfa;
-      font-weight: 700;
-    }
+    .fact-card .fact-emoji { font-size: 100px; display: block; margin-bottom: 20px; }
+    .fact-card .fact-title { font-size: 48px; font-weight: 700; margin-bottom: 18px; color: #e2e8f0; }
+    .fact-card .fact-body { font-size: 32px; font-weight: 400; color: #94a3b8; line-height: 1.5; }
+    .fact-card .fact-body strong { color: #a78bfa; font-weight: 700; }
 
-    /* Fact 1 */
-    #fact1 {
-      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #172554 100%);
-    }
-    /* Fact 2 */
-    #fact2 {
-      background: linear-gradient(135deg, #0f172a 0%, #1a0f2e 50%, #2e1065 100%);
-    }
-    #fact2 .fact-card {
-      border-color: rgba(192,132,252,0.2);
-      background: linear-gradient(135deg, #1a0f2e, #0f0f23);
-    }
-    #fact2 .number-badge {
-      background: linear-gradient(135deg, #c084fc, #a855f7);
-    }
-    /* Fact 3 */
-    #fact3 {
-      background: linear-gradient(135deg, #0f172a 0%, #0f1f2e 50%, #164e63 100%);
-    }
-    #fact3 .fact-card {
-      border-color: rgba(6,182,212,0.2);
-      background: linear-gradient(135deg, #0f1f2e, #0f0f23);
-    }
-    #fact3 .number-badge {
-      background: linear-gradient(135deg, #22d3ee, #06b6d4);
-    }
+    #fact2 .fact-card { border-color: rgba(192,132,252,0.25); background: linear-gradient(135deg, rgba(26,15,46,0.9), rgba(15,15,35,0.9)); }
+    #fact2 .number-badge { background: linear-gradient(135deg, #c084fc, #a855f7); }
+    #fact3 .fact-card { border-color: rgba(6,182,212,0.25); background: linear-gradient(135deg, rgba(15,31,46,0.9), rgba(15,15,35,0.9)); }
+    #fact3 .number-badge { background: linear-gradient(135deg, #22d3ee, #06b6d4); }
 
     /* ── OUTRO ── */
-    #outro {
-      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0b0f14 100%);
-    }
-    #outro .ending-title {
-      font-size: 80px;
-      font-weight: 800;
-      text-align: center;
-      line-height: 1.3;
-      opacity: 0;
-    }
-    #outro .ending-emoji {
-      font-size: 100px;
-      opacity: 0;
-    }
+    #outro .ending-emoji { font-size: 100px; opacity: 0; position: relative; z-index: 3; }
+    #outro .ending-title { font-size: 72px; font-weight: 800; text-align: center; line-height: 1.3; opacity: 0; position: relative; z-index: 3; }
     #outro .cta-btn {
-      margin-top: 60px;
-      padding: 30px 100px;
-      border-radius: 60px;
+      margin-top: 50px; padding: 28px 90px; border-radius: 60px;
       background: linear-gradient(135deg, #818cf8, #c084fc);
-      font-size: 40px;
-      font-weight: 700;
-      color: white;
-      opacity: 0;
+      font-size: 36px; font-weight: 700; color: white; opacity: 0;
       box-shadow: 0 0 80px rgba(99,102,241,0.3);
+      position: relative; z-index: 3;
     }
 
-    /* Floating particles (animated in CSS) */
+    /* ── PARTICLES ── */
     .particle {
-      position: absolute;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: rgba(99,102,241,0.3);
+      position: absolute; width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(99,102,241,0.4); z-index: 3;
       animation: float 6s ease-in-out infinite;
     }
     @keyframes float {
       0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
       50% { transform: translateY(-80px) scale(2); opacity: 0.6; }
     }
-
     .p1 { top: 10%; left: 10%; animation-delay: 0s; }
     .p2 { top: 20%; right: 15%; animation-delay: 1s; }
     .p3 { bottom: 30%; left: 5%; animation-delay: 2s; }
     .p4 { bottom: 10%; right: 10%; animation-delay: 3s; }
-    .p5 { top: 40%; left: 50%; animation-delay: 4s; }
   </style>
 </head>
 <body>
-  <div id="root" data-composition-id="what-is-ai" data-width="1080" data-height="1920" data-duration="27" data-start="0">
+  <div id="root" data-composition-id="what-is-ai" data-width="1080" data-height="1920" data-duration="22" data-start="0" data-audio="voiceover-fast.mp3" data-audio-start="0">
 
-    <!-- ===== HOOK SCENE (4s) ===== -->
-    <section id="hook" class="clip" data-start="0" data-duration="4" data-track-index="1">
+    <!-- ===== HOOK SCENE (0-3s) ===== -->
+    <section id="hook" class="clip" data-start="0" data-duration="3" data-track-index="1">
+      <img class="bg-img" src="assets/hook.jpg" alt="AI brain" />
+      <div class="overlay"></div>
       <div class="glow-ring"></div>
-      <div class="number-highlight">3</div>
       <div class="particle p1"></div>
       <div class="particle p2"></div>
       <div class="particle p3"></div>
       <div class="particle p4"></div>
-      <div class="particle p5"></div>
-      <div class="emoji-main">🤖</div>
-      <div class="title-text">What is <span>AI</span>?</div>
-      <div class="subtitle">🔥 3 Mind-Blowing Facts</div>
+      <div class="content">
+        <div class="emoji-main">🤖</div>
+        <div class="title-text">What is <span>AI</span>?</div>
+        <div class="subtitle">🔥 3 Mind-Blowing Facts</div>
+      </div>
     </section>
 
-    <!-- ===== FACT 1 (6s) ===== -->
-    <section id="fact1" class="clip" data-start="4" data-duration="6" data-track-index="2">
+    <!-- ===== FACT 1 (3-7.5s) ===== -->
+    <section id="fact1" class="clip" data-start="3" data-duration="4.5" data-track-index="2">
+      <img class="bg-img" src="assets/fact1.jpg" alt="Vintage technology" />
+      <div class="overlay-light"></div>
+      <div class="content">
+        <div class="fact-card">
+          <div class="bg-number">1</div>
+          <div class="number-badge">1</div>
+          <div class="fact-emoji">🗓️</div>
+          <div class="fact-title">AI is ANCIENT</div>
+          <div class="fact-body">
+            Term <strong>"AI"</strong> coined in <strong>1956</strong> at Dartmouth.<br>
+            That's <strong>68+ years</strong> of evolution!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FACT 2 (7.5-12.5s) ===== -->
+    <section id="fact2" class="clip" data-start="7.5" data-duration="5" data-track-index="3">
+      <img class="bg-img" src="assets/fact2.jpg" alt="Data center" />
+      <div class="overlay-light"></div>
+      <div class="content">
+        <div class="fact-card">
+          <div class="bg-number">2</div>
+          <div class="number-badge">2</div>
+          <div class="fact-emoji">⚡</div>
+          <div class="fact-title">AI is INCREDIBLY FAST</div>
+          <div class="fact-body">
+            Reads <strong>1M books</strong> while you read 1 page.<br>
+            GPT-4 trained on <strong>13 trillion tokens</strong>!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FACT 3 (12.5-17.5s) ===== -->
+    <section id="fact3" class="clip" data-start="12.5" data-duration="5" data-track-index="4">
+      <img class="bg-img" src="assets/fact3.jpg" alt="AI Art" />
+      <div class="overlay-light"></div>
+      <div class="content">
+        <div class="fact-card">
+          <div class="bg-number">3</div>
+          <div class="number-badge">3</div>
+          <div class="fact-emoji">🎨</div>
+          <div class="fact-title">AI is CREATIVE</div>
+          <div class="fact-body">
+            Won 1st place at <strong>Colorado State Fair</strong> (2022).<br>
+            Creates <strong>15M+ images daily</strong>!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== OUTRO (17.5-22s) ===== -->
+    <section id="outro" class="clip" data-start="17.5" data-duration="4.5" data-track-index="5">
+      <img class="bg-img" src="assets/outro.jpg" alt="Abstract" />
+      <div class="overlay"></div>
       <div class="particle p1"></div>
-      <div class="particle p3"></div>
-      <div class="fact-card">
-        <div class="bg-number">1</div>
-        <div class="number-badge">1</div>
-        <div class="fact-emoji">🗓️</div>
-        <div class="fact-title">AI is OLDER than you think</div>
-        <div class="fact-body">
-          The term <strong>"Artificial Intelligence"</strong> was coined way back in <strong>1956</strong> at Dartmouth College. That's <strong>68+ years</strong> of AI evolution!
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FACT 2 (6s) ===== -->
-    <section id="fact2" class="clip" data-start="10" data-duration="6" data-track-index="3">
-      <div class="fact-card">
-        <div class="bg-number">2</div>
-        <div class="number-badge">2</div>
-        <div class="fact-emoji">⚡</div>
-        <div class="fact-title">AI learns at SUPERSONIC speed</div>
-        <div class="fact-body">
-          Modern AI models can read <strong>1 million books</strong> in the time it takes you to read <strong>1 page</strong>. GPT-4 was trained on ~<strong>13 trillion tokens</strong>!
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FACT 3 (6s) ===== -->
-    <section id="fact3" class="clip" data-start="16" data-duration="6" data-track-index="4">
-      <div class="fact-card">
-        <div class="bg-number">3</div>
-        <div class="number-badge">3</div>
-        <div class="fact-emoji">🎨</div>
-        <div class="fact-title">AI creates ART & MUSIC</div>
-        <div class="fact-body">
-          AI-generated art won <strong>1st place</strong> at Colorado State Fair (2022). Today, AI creates <strong>15 million+ images daily</strong> — more than human artists combined!
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== OUTRO (5s) ===== -->
-    <section id="outro" class="clip" data-start="22" data-duration="5" data-track-index="5">
       <div class="particle p2"></div>
+      <div class="particle p3"></div>
       <div class="particle p4"></div>
-      <div class="particle p5"></div>
-      <div class="ending-emoji">🚀</div>
-      <div class="ending-title">
-        Which AI fact blew<br>your mind the most?
+      <div class="content">
+        <div class="ending-emoji">🚀</div>
+        <div class="ending-title">Which fact surprised<br>you most?</div>
+        <div class="cta-btn">👇 Subscribe!</div>
       </div>
-      <div class="cta-btn">👇 Subscribe for more!</div>
     </section>
 
   </div>
 
   <script>
-    // ── GSAP TIMELINE ──
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     
-    // ===== HOOK (0s - 4s) =====
-    tl.fromTo("#hook .glow-ring", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: "power2.out" }, 0)
+    // ===== HOOK (0s - 3s) =====
+    tl.fromTo("#hook .glow-ring", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "power2.out" }, 0)
       .fromTo("#hook .emoji-main", { scale: 0, rotation: -30, opacity: 0 }, 
-        { scale: 1, rotation: 10, opacity: 1, duration: 0.8, ease: "back.out(2)" }, 0.3)
-      .to("#hook .emoji-main", { rotation: -10, duration: 0.3, yoyo: true, repeat: 3 }, 1.1)
-      .fromTo("#hook .title-text", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, 1.0)
-      .fromTo("#hook .subtitle", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, 1.8)
-      .to("#hook .subtitle", { scale: 1.05, duration: 0.4, yoyo: true, repeat: 2 }, 2.8)
-      .to("#hook .particle", { scale: 1.5, opacity: 0.6, duration: 0.5, yoyo: true, repeat: 3 }, 0.5);
+        { scale: 1, rotation: 10, opacity: 1, duration: 0.6, ease: "back.out(2)" }, 0.2)
+      .to("#hook .emoji-main", { rotation: -10, duration: 0.2, yoyo: true, repeat: 3 }, 0.8)
+      .fromTo("#hook .title-text", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 0.6)
+      .fromTo("#hook .subtitle", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 1.3)
+      .to("#hook .subtitle", { scale: 1.05, duration: 0.3, yoyo: true, repeat: 2 }, 2.0);
 
-    // ===== FACT 1 (4s - 10s) =====
-    tl.fromTo("#fact1 .fact-card", { y: 120, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.8 }, 4.2)
-      .fromTo("#fact1 .bg-number", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2 }, 4.2)
-      .fromTo("#fact1 .number-badge", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 4.5)
-      .fromTo("#fact1 .fact-emoji", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.7, ease: "back.out(2)" }, 4.7)
-      .fromTo("#fact1 .fact-title", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7 }, 5.2)
-      .fromTo("#fact1 .fact-body", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 5.7);
+    // ===== FACT 1 (3s - 7.5s) =====
+    tl.fromTo("#fact1 .fact-card", { y: 100, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.6 }, 3.2)
+      .fromTo("#fact1 .bg-number", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8 }, 3.2)
+      .fromTo("#fact1 .number-badge", { y: -50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 3.4)
+      .fromTo("#fact1 .fact-emoji", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, 3.6)
+      .fromTo("#fact1 .fact-title", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5 }, 4.0)
+      .fromTo("#fact1 .fact-body", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 4.4);
 
-    // ===== FACT 2 (10s - 16s) =====
-    tl.fromTo("#fact2 .fact-card", { y: 120, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.8 }, 10.2)
-      .fromTo("#fact2 .bg-number", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2 }, 10.2)
-      .fromTo("#fact2 .number-badge", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 10.5)
-      .fromTo("#fact2 .fact-emoji", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.7, ease: "back.out(2)" }, 10.7)
-      .fromTo("#fact2 .fact-title", { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7 }, 11.2)
-      .fromTo("#fact2 .fact-body", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 11.7);
+    // ===== FACT 2 (7.5s - 12.5s) =====
+    tl.fromTo("#fact2 .fact-card", { y: 100, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.6 }, 7.7)
+      .fromTo("#fact2 .bg-number", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8 }, 7.7)
+      .fromTo("#fact2 .number-badge", { y: -50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 7.9)
+      .fromTo("#fact2 .fact-emoji", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, 8.1)
+      .fromTo("#fact2 .fact-title", { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5 }, 8.5)
+      .fromTo("#fact2 .fact-body", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 8.9);
 
-    // ===== FACT 3 (16s - 22s) =====
-    tl.fromTo("#fact3 .fact-card", { y: 120, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.8 }, 16.2)
-      .fromTo("#fact3 .bg-number", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2 }, 16.2)
-      .fromTo("#fact3 .number-badge", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 16.5)
-      .fromTo("#fact3 .fact-emoji", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.7, ease: "back.out(2)" }, 16.7)
-      .fromTo("#fact3 .fact-title", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7 }, 17.2)
-      .fromTo("#fact3 .fact-body", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 17.7);
+    // ===== FACT 3 (12.5s - 17.5s) =====
+    tl.fromTo("#fact3 .fact-card", { y: 100, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.6 }, 12.7)
+      .fromTo("#fact3 .bg-number", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8 }, 12.7)
+      .fromTo("#fact3 .number-badge", { y: -50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 12.9)
+      .fromTo("#fact3 .fact-emoji", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, 13.1)
+      .fromTo("#fact3 .fact-title", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5 }, 13.5)
+      .fromTo("#fact3 .fact-body", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 13.9);
 
-    // ===== OUTRO (22s - 27s) =====
-    tl.fromTo("#outro .ending-emoji", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "back.out(2)" }, 22.2)
-      .to("#outro .ending-emoji", { scale: 1.2, duration: 0.3, yoyo: true, repeat: 4, overwrite: "auto" }, 22.5)
-      .fromTo("#outro .ending-title", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, 22.8)
-      .fromTo("#outro .cta-btn", { y: 60, opacity: 0, scale: 0.8 }, { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "back.out(2)" }, 24.0)
-      .to("#outro .particle", { scale: 2, opacity: 0.8, duration: 0.5, yoyo: true, repeat: 3 }, 22.2);
+    // ===== OUTRO (17.5s - 22s) =====
+    tl.fromTo("#outro .ending-emoji", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(2)" }, 17.7)
+      .to("#outro .ending-emoji", { scale: 1.2, duration: 0.2, yoyo: true, repeat: 4, overwrite: "auto" }, 18.0)
+      .fromTo("#outro .ending-title", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 18.3)
+      .fromTo("#outro .cta-btn", { y: 50, opacity: 0, scale: 0.8 }, { y: 0, opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, 19.3);
 
     window.__timelines["what-is-ai"] = tl;
   </script>
