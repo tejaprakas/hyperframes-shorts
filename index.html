@@ -280,54 +280,50 @@
   <script>
     // ── GSAP TIMELINE ──
     window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     
-    __timelines["what-is-ai"] = function() {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      
-      // ===== HOOK (0s - 4s) =====
-      tl.fromTo("#hook .glow-ring", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: "power2.out" }, 0)
-        .fromTo("#hook .emoji-main", { scale: 0, rotation: -30, opacity: 0 }, 
-          { scale: 1, rotation: 10, opacity: 1, duration: 0.8, ease: "back.out(2)" }, 0.3)
-        .to("#hook .emoji-main", { rotation: -10, duration: 0.3, yoyo: true, repeat: 3 }, 1.1)
-        .fromTo("#hook .title-text", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, 1.0)
-        .fromTo("#hook .subtitle", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, 1.8)
-        .to("#hook .subtitle", { scale: 1.05, duration: 0.4, yoyo: true, repeat: 2 }, 2.8)
-        // Particle pulse
-        .to("#hook .particle", { scale: 1.5, opacity: 0.6, duration: 0.5, yoyo: true, repeat: 3 }, 0.5);
+    // ===== HOOK (0s - 4s) =====
+    tl.fromTo("#hook .glow-ring", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: "power2.out" }, 0)
+      .fromTo("#hook .emoji-main", { scale: 0, rotation: -30, opacity: 0 }, 
+        { scale: 1, rotation: 10, opacity: 1, duration: 0.8, ease: "back.out(2)" }, 0.3)
+      .to("#hook .emoji-main", { rotation: -10, duration: 0.3, yoyo: true, repeat: 3 }, 1.1)
+      .fromTo("#hook .title-text", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, 1.0)
+      .fromTo("#hook .subtitle", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, 1.8)
+      .to("#hook .subtitle", { scale: 1.05, duration: 0.4, yoyo: true, repeat: 2 }, 2.8)
+      .to("#hook .particle", { scale: 1.5, opacity: 0.6, duration: 0.5, yoyo: true, repeat: 3 }, 0.5);
 
-      // ===== FACT 1 (4s - 10s) =====
-      tl.fromTo("#fact1 .fact-card", { y: 120, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.8 }, 4.2)
-        .fromTo("#fact1 .bg-number", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2 }, 4.2)
-        .fromTo("#fact1 .number-badge", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 4.5)
-        .fromTo("#fact1 .fact-emoji", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.7, ease: "back.out(2)" }, 4.7)
-        .fromTo("#fact1 .fact-title", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7 }, 5.2)
-        .fromTo("#fact1 .fact-body", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 5.7);
+    // ===== FACT 1 (4s - 10s) =====
+    tl.fromTo("#fact1 .fact-card", { y: 120, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.8 }, 4.2)
+      .fromTo("#fact1 .bg-number", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2 }, 4.2)
+      .fromTo("#fact1 .number-badge", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 4.5)
+      .fromTo("#fact1 .fact-emoji", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.7, ease: "back.out(2)" }, 4.7)
+      .fromTo("#fact1 .fact-title", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7 }, 5.2)
+      .fromTo("#fact1 .fact-body", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 5.7);
 
-      // ===== FACT 2 (10s - 16s) =====
-      tl.fromTo("#fact2 .fact-card", { y: 120, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.8 }, 10.2)
-        .fromTo("#fact2 .bg-number", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2 }, 10.2)
-        .fromTo("#fact2 .number-badge", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 10.5)
-        .fromTo("#fact2 .fact-emoji", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.7, ease: "back.out(2)" }, 10.7)
-        .fromTo("#fact2 .fact-title", { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7 }, 11.2)
-        .fromTo("#fact2 .fact-body", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 11.7);
+    // ===== FACT 2 (10s - 16s) =====
+    tl.fromTo("#fact2 .fact-card", { y: 120, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.8 }, 10.2)
+      .fromTo("#fact2 .bg-number", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2 }, 10.2)
+      .fromTo("#fact2 .number-badge", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 10.5)
+      .fromTo("#fact2 .fact-emoji", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.7, ease: "back.out(2)" }, 10.7)
+      .fromTo("#fact2 .fact-title", { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7 }, 11.2)
+      .fromTo("#fact2 .fact-body", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 11.7);
 
-      // ===== FACT 3 (16s - 22s) =====
-      tl.fromTo("#fact3 .fact-card", { y: 120, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.8 }, 16.2)
-        .fromTo("#fact3 .bg-number", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2 }, 16.2)
-        .fromTo("#fact3 .number-badge", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 16.5)
-        .fromTo("#fact3 .fact-emoji", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.7, ease: "back.out(2)" }, 16.7)
-        .fromTo("#fact3 .fact-title", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7 }, 17.2)
-        .fromTo("#fact3 .fact-body", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 17.7);
+    // ===== FACT 3 (16s - 22s) =====
+    tl.fromTo("#fact3 .fact-card", { y: 120, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.8 }, 16.2)
+      .fromTo("#fact3 .bg-number", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2 }, 16.2)
+      .fromTo("#fact3 .number-badge", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 16.5)
+      .fromTo("#fact3 .fact-emoji", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.7, ease: "back.out(2)" }, 16.7)
+      .fromTo("#fact3 .fact-title", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7 }, 17.2)
+      .fromTo("#fact3 .fact-body", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 17.7);
 
-      // ===== OUTRO (22s - 27s) =====
-      tl.fromTo("#outro .ending-emoji", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "back.out(2)" }, 22.2)
-        .to("#outro .ending-emoji", { scale: 1.2, duration: 0.3, yoyo: true, repeat: 4 }, 22.5)
-        .fromTo("#outro .ending-title", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, 22.8)
-        .fromTo("#outro .cta-btn", { y: 60, opacity: 0, scale: 0.8 }, { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "back.out(2)" }, 24.0)
-        .to("#outro .particle", { scale: 2, opacity: 0.8, duration: 0.5, yoyo: true, repeat: 3 }, 22.2);
+    // ===== OUTRO (22s - 27s) =====
+    tl.fromTo("#outro .ending-emoji", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "back.out(2)" }, 22.2)
+      .to("#outro .ending-emoji", { scale: 1.2, duration: 0.3, yoyo: true, repeat: 4, overwrite: "auto" }, 22.5)
+      .fromTo("#outro .ending-title", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, 22.8)
+      .fromTo("#outro .cta-btn", { y: 60, opacity: 0, scale: 0.8 }, { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "back.out(2)" }, 24.0)
+      .to("#outro .particle", { scale: 2, opacity: 0.8, duration: 0.5, yoyo: true, repeat: 3 }, 22.2);
 
-      return tl;
-    };
+    window.__timelines["what-is-ai"] = tl;
   </script>
 </body>
 </html>
